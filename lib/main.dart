@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Samsung Notes',
       theme: ThemeData(
+        scaffoldBackgroundColor: Colors.grey.shade200,
         appBarTheme: AppBarTheme(
           backgroundColor: Colors.grey.shade200,
           iconTheme: IconThemeData(

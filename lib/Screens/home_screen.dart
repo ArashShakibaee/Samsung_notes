@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:samsung_note/CustomWidget/base_container.dart';
+import 'package:samsung_note/CustomWidget/home_scaffold.dart';
 import 'package:samsung_note/Database/database.dart';
-import 'package:samsung_note/Screens/add_screen.dart';
 import 'package:samsung_note/Screens/details_screen.dart';
 import 'package:samsung_note/app_style.dart';
 
@@ -22,6 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
     _database = Database();
     super.initState();
   }
+
   @override
   void dispose() {
     _database.close();
@@ -30,45 +31,35 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    final double itemHeight = (size.height - kToolbarHeight - 24) / 2;
-    final double itemWidth = size.width / 2;
-    return Scaffold(
-      backgroundColor: Colors.grey.shade200,
-      drawer: const Drawer(),
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.grey.shade200,
-        title: Text(
-          "All notes",
-          style: AppStyle.normalTextStyle.copyWith(fontWeight: FontWeight.w600),
-        ),
-        actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
-          IconButton(
-              onPressed: () {}, icon: const Icon(Icons.more_vert_outlined))
-        ],
-      ),
-      body: FutureBuilder<List<NoteEntityData>>(
-        future: _database.getAllNotes(),
-        builder: (context, snapshot) {
-          final List<NoteEntityData>? notes = snapshot.data;
-          if (snapshot.connectionState != ConnectionState.done) {
-            return Center(
+    return FutureBuilder<List<NoteEntityData>>(
+      future: _database.getAllNotes(),
+      builder: (context, snapshot) {
+        final List<NoteEntityData>? notes = snapshot.data;
+        if (snapshot.connectionState != ConnectionState.done) {
+          return HomeScaffold(
+            notes: notes,
+            body: Center(
               child: LoadingAnimationWidget.inkDrop(
-                  color: Colors.deepOrange, size: 200),
-            );
-          } else if (snapshot.hasError) {
-            return Center(
-              child: Text(snapshot.error.toString()),
-            );
-          } else if (notes!.isNotEmpty) {
-            return Padding(
+                  color: Colors.deepOrange, size: 35),
+            ),
+          );
+        } else if (snapshot.hasError) {
+          return HomeScaffold(
+            notes: notes,
+            body: Center(
+              child: LoadingAnimationWidget.inkDrop(
+                  color: Colors.deepOrange, size: 35),
+            ),
+          );
+        } else if (notes!.isNotEmpty) {
+          return HomeScaffold(
+            notes: notes,
+            body: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 child: GridView.builder(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      mainAxisExtent: 170,
-                      crossAxisCount: 2,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    mainAxisExtent: 170,
+                    crossAxisCount: 2,
                   ),
                   itemCount: notes.length,
                   itemBuilder: (context, index) {
@@ -77,9 +68,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         onTap: () => Get.to(() => DetailsScreen(id: note.id)),
                         child: BaseContainer(note: note));
                   },
-                ));
-          } else if (notes.isEmpty) {
-            return Center(
+                )),
+          );
+        } else if (notes.isEmpty) {
+          return HomeScaffold(
+            notes: notes,
+            body: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -95,23 +89,11 @@ class _HomeScreenState extends State<HomeScreen> {
                           .copyWith(color: Colors.grey.shade500, fontSize: 17)),
                 ],
               ),
-            );
-          }
-          return const Text('No Data Found');
-        },
-      ),
-      floatingActionButton: SizedBox(
-        height: 65,
-        width: 65,
-        child: FloatingActionButton(
-          tooltip: 'Add note',
-          child: const Icon(
-            Icons.add,
-            size: 30,
-          ),
-          onPressed: () => Get.to(() => const AddScreen()),
-        ),
-      ),
+            ),
+          );
+        }
+        return const Text('No Data Found');
+      },
     );
   }
 }
