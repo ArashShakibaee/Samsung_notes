@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:samsung_note/Database/database.dart';
 import 'package:samsung_note/Screens/add_screen.dart';
@@ -26,24 +27,24 @@ class HomeScaffold extends StatelessWidget {
         ),
         actions: [
           IconButton(
-              splashRadius: 20,
+              splashRadius: 20.r,
               onPressed: () => Get.to(() => SearchBar(notes: notes!)),
               icon: const Icon(Icons.search),
           ),
           IconButton(
-              splashRadius: 20,
+              splashRadius: 20.r,
               onPressed: () {}, icon: const Icon(Icons.more_vert_outlined))
         ],
       ),
       body: body,
       floatingActionButton: SizedBox(
-        height: 65,
-        width: 65,
+        height: 65.h,
+        width: 65.w,
         child: FloatingActionButton(
           tooltip: 'Add note',
-          child: const Icon(
+          child: Icon(
             Icons.add,
-            size: 30,
+            size: 30.r,
           ),
           onPressed: () => Get.to(() => const AddScreen()),
         ),

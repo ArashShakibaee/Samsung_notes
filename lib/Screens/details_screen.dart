@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:samsung_note/CustomWidget/custom_dialog.dart';
@@ -42,18 +43,18 @@ class _DetailsScreenState extends State<DetailsScreen> {
       appBar: AppBar(
           elevation: 1,
           leading: IconButton(
-              splashRadius: 20,
+              splashRadius: 20.r,
               onPressed: () => Get.back(),
               icon: const Icon(Icons.arrow_back_ios)),
           actions: [
             IconButton(
-                splashRadius: 20,
+                splashRadius: 20.r,
                 onPressed: () => Get.to(() => EditScreen(
                       id: widget.id,
                     )),
                 icon: const Icon(Icons.edit)),
             IconButton(
-                splashRadius: 20,
+                splashRadius: 20.r,
                 onPressed: (){
                   showDialog(
                     context: context,
@@ -72,7 +73,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
           future: getSingleNote(),
           builder: (context, snapshot) {
             return Padding(
-              padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 16),
+              padding: EdgeInsets.symmetric(vertical: 32.h, horizontal: 16.w),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -89,21 +90,21 @@ class _DetailsScreenState extends State<DetailsScreen> {
                           : Container(),
                     ],
                   ),
-                  const SizedBox(height: 25),
+                  SizedBox(height: 25.h),
                   Text(_noteData.description,
                       style: AppStyle.descriptionTextStyle),
-                  const SizedBox(height: 50),
+                  SizedBox(height: 50.h),
                   Text(
                     "Created time: $time",
                     style: AppStyle.smallTextStyle
-                        .copyWith(fontSize: 16, color: Colors.grey.shade500),
+                        .copyWith(fontSize: 16.sp, color: Colors.grey.shade500),
                     textAlign: TextAlign.end,
                   ),
-                  const SizedBox(height: 10),
+                  SizedBox(height: 10.h),
                   Text(
                     "Created Datetime: $dateTime",
                     style: AppStyle.smallTextStyle
-                        .copyWith(fontSize: 16, color: Colors.grey.shade500),
+                        .copyWith(fontSize: 16.sp, color: Colors.grey.shade500),
                     textAlign: TextAlign.end,
                   ),
                 ],

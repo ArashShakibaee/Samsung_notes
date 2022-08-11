@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:samsung_note/Database/database.dart';
 import 'package:samsung_note/app_style.dart';
@@ -10,34 +11,34 @@ class BaseContainer extends StatelessWidget {
     //final time = DateFormat.Hm().format(note.createdTime);
     final dateTime = DateFormat.yMMMd().format(note.createdTime);
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: EdgeInsets.symmetric(vertical: 8.0.h,horizontal: 8.w),
       child: Container(
-        width: MediaQuery.of(context).size.width*0.45,
+        //width: MediaQuery.of(context).size.width*0.45,
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(30)
+          borderRadius: BorderRadius.circular(30.r)
         ),
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: EdgeInsets.symmetric(horizontal: 16.0.w,vertical: 16.h),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children:  [
-              const CircleAvatar(
+              CircleAvatar(
                 backgroundColor: Colors.grey,
-                radius: 4,
+                radius: 4.r,
               ),
-              const SizedBox(height: 6),
+              SizedBox(height: 6.h),
               Text(note.title,style: AppStyle.normalTextStyle,),
-              const SizedBox(height: 5),
+              SizedBox(height: 5.h),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(dateTime,style: AppStyle.smallTextStyle.copyWith(color: Colors.grey),),
-                  note.isImportant ? const Icon(Icons.star,color: Colors.orange,size: 20,): Container(),
+                  note.isImportant ? Icon(Icons.star,color: Colors.orange,size: 20.r,): Container(),
                 ],
               ),
-              const SizedBox(height: 15),
+              SizedBox(height: 15.h),
               Expanded(child: Text(note.description,style: AppStyle.smallTextStyle,overflow: TextOverflow.fade)),
             ],
           ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:samsung_note/Database/database.dart';
 import 'package:samsung_note/Screens/home_screen.dart';
@@ -37,21 +38,21 @@ class _AddScreenState extends State<AddScreen> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-            splashRadius: 20,
+            splashRadius: 20.r,
             onPressed: () => Get.back(),
             icon: const Icon(Icons.arrow_back_ios)),
         actions: [
           IconButton(
-              splashRadius: 20,
+              splashRadius: 20.r,
               onPressed: () => setState(() => isImportant = !isImportant),
               icon: isImportant
                   ? const Icon(Icons.star, color: Colors.orange)
                   : const Icon(Icons.star_border)),
           Container(
-              padding: const EdgeInsets.all(8),
+              padding:EdgeInsets.symmetric(vertical: 8.h,horizontal: 8.w),
               child: MaterialButton(
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(35)),
+                      borderRadius: BorderRadius.circular(35.r)),
                   onPressed: _onPressedSaveButton,
                   child: Text(
                     "Save",
@@ -63,7 +64,7 @@ class _AddScreenState extends State<AddScreen> {
       body: SingleChildScrollView(
         child: Form(
           child: Padding(
-            padding: const EdgeInsets.all(32.0),
+            padding: EdgeInsets.symmetric(vertical: 32.0.h,horizontal: 32.w),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -76,16 +77,16 @@ class _AddScreenState extends State<AddScreen> {
                       hintStyle: TextStyle(
                           color: Colors.grey.shade400,
                           fontFamily: "Source",
-                          fontSize: 22,
+                          fontSize: 22.sp,
                           fontWeight: FontWeight.bold),
                       border: InputBorder.none),
-                  cursorHeight: 22,
+                  cursorHeight: 22.h,
                   minLines: 1,
                   maxLength: 30,
-                  style: const TextStyle(
+                  style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.w700,
-                      fontSize: 20,
+                      fontSize: 20.sp,
                       fontFamily: "Source"),
                 ),
                 TextFormField(
@@ -96,16 +97,16 @@ class _AddScreenState extends State<AddScreen> {
                     hintStyle: TextStyle(
                         color: Colors.grey.shade400,
                         fontFamily: "Source",
-                        fontSize: 18,
+                        fontSize: 18.sp,
                         fontWeight: FontWeight.w500),
                     border: InputBorder.none,
                   ),
-                  cursorHeight: 22,
+                  cursorHeight: 22.h,
                   maxLines: null,
-                  style: const TextStyle(
+                  style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.w500,
-                      fontSize: 18,
+                      fontSize: 18.sp,
                       fontFamily: "Source"),
                 ),
               ],

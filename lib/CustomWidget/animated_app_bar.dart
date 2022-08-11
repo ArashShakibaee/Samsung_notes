@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:samsung_note/CustomWidget/base_container.dart';
 import 'package:samsung_note/Database/database.dart';
@@ -34,9 +35,9 @@ class _AnimatedAppBarState extends State<AnimatedAppBar> {
           ];
         },
         body: GridView.builder(
-          padding: const EdgeInsets.all(8),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            mainAxisExtent: 170,
+          padding:EdgeInsets.symmetric(horizontal: 8.w,vertical: 8.h),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            mainAxisExtent: 170.h,
             crossAxisCount: 2,
           ),
           itemCount: widget.notes.length,
@@ -49,13 +50,13 @@ class _AnimatedAppBarState extends State<AnimatedAppBar> {
         ),
       ),
       floatingActionButton: SizedBox(
-        height: 65,
-        width: 65,
+        height: 65.h,
+        width: 65.w,
         child: FloatingActionButton(
           tooltip: 'Add note',
-          child: const Icon(
+          child: Icon(
             Icons.add,
-            size: 30,
+            size: 30.r,
           ),
           onPressed: () => Get.to(() => const AddScreen()),
         ),
@@ -71,10 +72,10 @@ class CustomSliverAppBar extends SliverPersistentHeaderDelegate {
   CustomSliverAppBar({required this.notes, required this.onPressed});
 
   @override
-  double get maxExtent => 300;
+  double get maxExtent => 300.h;
 
   @override
-  double get minExtent => kToolbarHeight +30;
+  double get minExtent => kToolbarHeight +30.h;
 
   @override
   bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
@@ -101,10 +102,10 @@ class CustomSliverAppBar extends SliverPersistentHeaderDelegate {
                 return Stack(
                   children: [
                     Positioned(
-                      left: 0,
-                      right: 0,
-                      top: lerpDouble(0, 20, value),
-                      bottom: 0,
+                      left: 0.w,
+                      right: 0.w,
+                      top: lerpDouble(0, 20.h, value),
+                      bottom: 0.h,
                       child: Center(
                         child: Opacity(
                           opacity: value,
@@ -114,7 +115,7 @@ class CustomSliverAppBar extends SliverPersistentHeaderDelegate {
                               children: [
                                 TextSpan(
                                   text: '\n\n\nAll notes',
-                                  style:AppStyle.largeTextStyle.copyWith(fontSize: 40)
+                                  style:AppStyle.largeTextStyle.copyWith(fontSize: 40.sp)
                                 ),
                                 TextSpan(
                                   text: '\n\n${notes.length} notes',
@@ -141,7 +142,7 @@ class CustomSliverAppBar extends SliverPersistentHeaderDelegate {
                 leading: IconButton(
                   onPressed: onPressed,
                   icon: const Icon(Icons.menu_rounded, color: Colors.black),
-                  splashRadius: 20,
+                  splashRadius: 20.r,
                 ),
                 title: Opacity(
                   opacity: value,
@@ -155,13 +156,13 @@ class CustomSliverAppBar extends SliverPersistentHeaderDelegate {
                   IconButton(
                     onPressed: ()=>Get.to(()=>SearchBar(notes: notes)),
                     icon: const Icon(Icons.search_rounded, color: Colors.black),
-                    splashRadius: 20,
+                    splashRadius: 20.r,
                   ),
                   IconButton(
                     onPressed: () {},
                     icon: const Icon(Icons.more_vert_rounded,
                         color: Colors.black),
-                    splashRadius: 20,
+                    splashRadius: 20.r,
                   ),
                 ],
               );

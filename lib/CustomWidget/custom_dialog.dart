@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:samsung_note/app_style.dart';
 
@@ -53,22 +54,21 @@ class CustomDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      insetPadding: const EdgeInsets.all(8),
-      contentPadding: const EdgeInsets.fromLTRB(32.0, 24.0, 24.0, 24.0),
+      insetPadding: EdgeInsets.symmetric(vertical: 8.h,horizontal: 8.w),
+      contentPadding: EdgeInsets.fromLTRB(32.0.w, 24.0.h, 24.0.w, 24.0.h),
       alignment: Alignment.bottomCenter,
       backgroundColor: Colors.grey.shade200,
       elevation: 2,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15)
+        borderRadius: BorderRadius.circular(15.r)
       ),
       content: Builder(
         builder: (context) {
-          final width = MediaQuery.of(context).size.width;
           return SizedBox(
-            width: width,
+            width: double.infinity,
             child: Text(
               content,
-              style: AppStyle.normalTextStyle.copyWith(fontSize: 15),
+              style: AppStyle.normalTextStyle.copyWith(fontSize: 15.sp),
             ),
           );
         }
@@ -82,19 +82,19 @@ class CustomDialog extends StatelessWidget {
                 child: Text(
                   noButtonText,
                   style: AppStyle.normalTextStyle
-                      .copyWith(color: Colors.grey.shade600, fontSize: 15),
+                      .copyWith(color: Colors.grey.shade600, fontSize: 15.sp),
                 )),
             Container(
               color: Colors.grey.shade400,
-              width: 2,
-              height: 30,
+              width: 2.w,
+              height: 30.h,
             ),
             TextButton(
                 onPressed: () => onTapConfirmed.call(),
                 child: Text(
                   yesButtonText,
                   style: AppStyle.normalTextStyle
-                      .copyWith(color: Colors.deepOrange, fontSize: 15),
+                      .copyWith(color: Colors.deepOrange, fontSize: 15.sp),
                 )),
           ],
         )

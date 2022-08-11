@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:samsung_note/CustomWidget/base_container.dart';
 import 'package:samsung_note/Database/database.dart';
@@ -31,11 +32,11 @@ class _SearchBarState extends State<SearchBar> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 4,
+        elevation: 4.h,
         backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
-        leading: IconButton(splashRadius: 20,onPressed: ()=>Get.back(), icon: const Icon(Icons.arrow_back_ios)),
-        actions: [IconButton(splashRadius: 20,onPressed: (){}, icon: const Icon(Icons.close))],
+        leading: IconButton(splashRadius: 20.r,onPressed: ()=>Get.back(), icon: const Icon(Icons.arrow_back_ios)),
+        actions: [IconButton(splashRadius: 20.r,onPressed: (){}, icon: const Icon(Icons.close))],
         title: TextField(
           onChanged: (search)=>onSearch(search),
           autofocus: true,
@@ -47,10 +48,10 @@ class _SearchBarState extends State<SearchBar> {
         ),
       ),
       body: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 16),
+          padding: EdgeInsets.symmetric(vertical: 16.h),
           child: GridView.builder(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              mainAxisExtent: 170,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              mainAxisExtent: 170.h,
               crossAxisCount: 2,
             ),
             itemCount: _foundedUser!.length,

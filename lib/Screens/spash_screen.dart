@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:samsung_note/app_style.dart';
 import 'home_screen.dart';
@@ -37,12 +38,12 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
       backgroundColor: animation.value,
       body: Stack(children: [
         Center(
-          child: Image.asset('images/logo.png', width: 100),
+          child: Image.asset('images/logo.png', width: 100.w),
         ),
         Align(
           alignment: Alignment.bottomCenter,
           child: Padding(
-            padding: const EdgeInsets.only(bottom: 70),
+            padding: EdgeInsets.only(bottom: 70.h),
             child: Text(
               "Samsung Notes",
               style: AppStyle.largeTextStyle

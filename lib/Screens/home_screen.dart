@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:samsung_note/CustomWidget/animated_app_bar.dart';
 import 'package:samsung_note/CustomWidget/home_scaffold.dart';
@@ -38,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
             notes: notes,
             body: Center(
               child: LoadingAnimationWidget.inkDrop(
-                  color: Colors.deepOrange, size: 35),
+                  color: Colors.deepOrange, size: 35.r),
             ),
           );
         } else if (snapshot.hasError) {
@@ -46,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
             notes: notes,
             body: Center(
               child: LoadingAnimationWidget.inkDrop(
-                  color: Colors.deepOrange, size: 35),
+                  color: Colors.deepOrange, size: 35.r),
             ),
           );
         } else if (notes!.isNotEmpty) {
@@ -64,10 +65,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: Colors.grey.shade700,
                         fontWeight: FontWeight.w600),
                   ),
-                  const SizedBox(height: 20),
+                  SizedBox(height: 20.h),
                   Text("Tap the Add button to create a note",
                       style: AppStyle.normalTextStyle
-                          .copyWith(color: Colors.grey.shade500, fontSize: 17)),
+                          .copyWith(color: Colors.grey.shade500, fontSize: 17.sp)),
                 ],
               ),
             ),
