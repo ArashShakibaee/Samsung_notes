@@ -10,7 +10,7 @@ class BaseContainer extends StatelessWidget {
     //final time = DateFormat.Hm().format(note.createdTime);
     final dateTime = DateFormat.yMMMd().format(note.createdTime);
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0,vertical: 8),
+      padding: const EdgeInsets.all(8.0),
       child: Container(
         width: MediaQuery.of(context).size.width*0.45,
         decoration: BoxDecoration(

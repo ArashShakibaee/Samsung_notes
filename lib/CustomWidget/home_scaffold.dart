@@ -8,7 +8,9 @@ import 'package:samsung_note/app_style.dart';
 class HomeScaffold extends StatelessWidget {
   final Widget body;
   final List<NoteEntityData>? notes;
-  const HomeScaffold({Key? key,required this.body,required this.notes}) : super(key: key);
+
+  const HomeScaffold({Key? key, required this.body, required this.notes})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,10 +25,14 @@ class HomeScaffold extends StatelessWidget {
               .copyWith(fontWeight: FontWeight.w600),
         ),
         actions: [
-          IconButton(onPressed: () =>Get.to(()=>SearchBar(notes: notes!)), icon: const Icon(Icons.search)),
           IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.more_vert_outlined))
+              splashRadius: 20,
+              onPressed: () => Get.to(() => SearchBar(notes: notes!)),
+              icon: const Icon(Icons.search),
+          ),
+          IconButton(
+              splashRadius: 20,
+              onPressed: () {}, icon: const Icon(Icons.more_vert_outlined))
         ],
       ),
       body: body,

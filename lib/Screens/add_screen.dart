@@ -37,10 +37,12 @@ class _AddScreenState extends State<AddScreen> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
+            splashRadius: 20,
             onPressed: () => Get.back(),
             icon: const Icon(Icons.arrow_back_ios)),
         actions: [
           IconButton(
+              splashRadius: 20,
               onPressed: () => setState(() => isImportant = !isImportant),
               icon: isImportant
                   ? const Icon(Icons.star, color: Colors.orange)

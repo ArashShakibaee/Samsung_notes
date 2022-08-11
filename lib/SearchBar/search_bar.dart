@@ -19,7 +19,6 @@ class _SearchBarState extends State<SearchBar> {
   List<NoteEntityData>? _foundedUser = [];
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     setState(()=>_foundedUser = widget.notes);
   }
@@ -35,10 +34,11 @@ class _SearchBarState extends State<SearchBar> {
         elevation: 4,
         backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
-        leading: IconButton(onPressed: ()=>Get.back(), icon: const Icon(Icons.arrow_back_ios)),
-        actions: [IconButton(onPressed: (){}, icon: const Icon(Icons.close))],
+        leading: IconButton(splashRadius: 20,onPressed: ()=>Get.back(), icon: const Icon(Icons.arrow_back_ios)),
+        actions: [IconButton(splashRadius: 20,onPressed: (){}, icon: const Icon(Icons.close))],
         title: TextField(
           onChanged: (search)=>onSearch(search),
+          autofocus: true,
           decoration: InputDecoration(
             border: InputBorder.none,
             hintText: "Search notes",

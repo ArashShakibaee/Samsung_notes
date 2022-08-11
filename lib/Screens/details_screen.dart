@@ -42,15 +42,18 @@ class _DetailsScreenState extends State<DetailsScreen> {
       appBar: AppBar(
           elevation: 1,
           leading: IconButton(
+              splashRadius: 20,
               onPressed: () => Get.back(),
               icon: const Icon(Icons.arrow_back_ios)),
           actions: [
             IconButton(
+                splashRadius: 20,
                 onPressed: () => Get.to(() => EditScreen(
                       id: widget.id,
                     )),
                 icon: const Icon(Icons.edit)),
             IconButton(
+                splashRadius: 20,
                 onPressed: (){
                   showDialog(
                     context: context,

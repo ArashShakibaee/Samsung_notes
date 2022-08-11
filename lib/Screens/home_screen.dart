@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:samsung_note/CustomWidget/base_container.dart';
+import 'package:samsung_note/CustomWidget/animated_app_bar.dart';
 import 'package:samsung_note/CustomWidget/home_scaffold.dart';
 import 'package:samsung_note/Database/database.dart';
-import 'package:samsung_note/Screens/details_screen.dart';
 import 'package:samsung_note/app_style.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -52,24 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           );
         } else if (notes!.isNotEmpty) {
-          return HomeScaffold(
-            notes: notes,
-            body: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 16),
-                child: GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    mainAxisExtent: 170,
-                    crossAxisCount: 2,
-                  ),
-                  itemCount: notes.length,
-                  itemBuilder: (context, index) {
-                    final note = notes[index];
-                    return GestureDetector(
-                        onTap: () => Get.to(() => DetailsScreen(id: note.id)),
-                        child: BaseContainer(note: note));
-                  },
-                )),
-          );
+          return AnimatedAppBar(notes: notes);
         } else if (notes.isEmpty) {
           return HomeScaffold(
             notes: notes,
